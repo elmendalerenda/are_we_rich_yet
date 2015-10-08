@@ -1,5 +1,6 @@
-describe 'AWRY' do
+require 'awry'
 
+describe 'AWRY' do
   it 'calculates the spread' do
       agreement = OptionsAgreement.new(
         stock: 5000.0,
@@ -13,7 +14,6 @@ describe 'AWRY' do
 
     expect(spread).to eql(100000.0)
   end
-
 
   context 'vested quantity is based on the grant date' do
     it 'spread is positive after the cliff' do
@@ -61,10 +61,10 @@ describe 'AWRY' do
     context 'vested pct is released within a schedule' do
       it 'stock is vested monthly after the cliff' do
         agreement = OptionsAgreement.new(
-          stock: 5000.0,
+          stock: 5_000.0,
           strike_price: 10.0,
           grant_date: Date.new(2013, 1, 21),
-          cliff_pct:30.0,
+          cliff_pct: 30.0,
           cliff_n_months: 12,
           vesting_period: 24,
           vesting_rate_after_cliff: :monthly
@@ -75,22 +75,5 @@ describe 'AWRY' do
         expect(spread).to eql(30_000.00)
       end
     end
-
-  end
-end
-
-module AWRY
-
-  def self.spread(options_agreement, market_price, exercise_date=Date.today)
-    ((market_price - options_agreement.strike_price) * options_agreement.stock) * options_agreement.vested_portion(exercise_date)
-  end
-
-end
-
-require 'ostruct'
-class OptionsAgreement < OpenStruct
-  def vested_portion(exercise_date)
-    return 0.0 if exercise_date < (grant_date >> cliff_n_months)
-    1.0*(cliff_pct / 100.0)
   end
 end
