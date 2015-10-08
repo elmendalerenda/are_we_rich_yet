@@ -45,49 +45,48 @@
 
     <div class="container">
       <!-- Example row of columns -->
-        <div class="row">
-          <div class="col-md-12">
-            <div class="form-inline">
-              <div class="form-group">
-                <label for="stocks" class="sr-only">Stocks</label>
-                <input type="number" name="stocks" class="form-control" id="stocks" placeholder="Amount of Stocks">
-              </div>
-              <div class="form-group">
-                <label for="grantdate" class="sr-only">Grant Date</label>
-                <input type="date" name="grantdate" class="form-control" id="grantdate" placeholder="Grant Date">
-              </div>
-              <div class="form-group">
-                <label for="strikeprice" class="sr-only">Strike Price</label>
-                <input type="number" name="strikeprice" class="form-control" id="strikeprice" placeholder="5,000.00">
-              </div>
+      <p>
+      <div class="row">
+        <div class="col-md-offset-2 col-md-10">
+          <div class="form-inline">
+            <div class="form-group">
+              <label for="stocks" class="sr-only">Stocks</label>
+              <input type="number" name="stocks" class="form-control" id="stocks" placeholder="Amount of Stocks">
+            </div>
+            <div class="form-group">
+              <label for="grantdate" class="sr-only">Grant Date</label>
+              <input type="date" name="grantdate" class="form-control" id="grantdate" placeholder="Grant Date">
+            </div>
+            <div class="form-group">
+              <label for="strikeprice" class="sr-only">Strike Price</label>
+              <input type="number" name="strikeprice" class="form-control" id="strikeprice" placeholder="5,000.00">
             </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-md-12">
-            <button type="submit" id="get-spread" class="btn btn-primary">Get the Spread</button>
-          </div>
+      </div>
+      </p>
+
+      <p class="text-center">
+        <button type="submit" id="get-spread" class="btn btn-primary btn-lg">Get the Spread</button>
+      </p>
+
+      <div class="row">
+        <div class="col-md-offset-4 col-md-4">
+          <p class="bg-primary text-center">
+          <label id="spread" class="h1">$12.00</label>
+          </p>
         </div>
+      </div>
 
-        <div class="row">
-        <div>
-          <div class="col-md-12">
-            <label id="spread">12</label>
+      <hr>
 
-          </div>
-          </div>
-          </div>
-
-
-  <hr>
-
-  <footer>
-    <p>&copy; Company 2015</p>
-  </footer>
-</div> <!-- /container -->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
-<script src="js/vendor/bootstrap.min.js"></script>
-<script src="js/main.js"></script>
-</body>
-</html>
+      <footer>
+        <p>&copy; Company 2015</p>
+      </footer>
+    </div> <!-- /container -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+    <script src="js/vendor/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+    </body>
+    </html>
