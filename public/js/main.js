@@ -7,11 +7,14 @@ function submitForm() {
         "strikeprice": $('#strikeprice').val()
       },
       function (result){
-        $('#spread').text(JSON.parse(result)['spread'])
+        $('#spread').text('$ ' + Number(JSON.parse(result)['spread']).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,'))
       }
   );
 }
 
-$('#get-spread').click(function () {
-  submitForm();
-})
+$(document).ready(function() {
+  $("#form").submit(function(e){
+    e.preventDefault();
+    submitForm();
+  });
+});
