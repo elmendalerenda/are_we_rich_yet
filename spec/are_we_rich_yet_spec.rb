@@ -27,7 +27,8 @@ describe 'AWRY calculates the spread' do
         strike_price: 10.0,
         grant_date: Date.new(2013, 1, 21),
         cliff_pct: 100.0,
-        cliff_n_months: 12
+        cliff_n_months: 12,
+        vesting_period: 0
       )
       date_before_cliff_ends = Date.new(2013, 3, 21)
 
