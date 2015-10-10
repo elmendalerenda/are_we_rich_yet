@@ -7,5 +7,7 @@ Options Agreement: From [Investopedia](http://www.investopedia.com/terms/o/optio
 
 Spread: the difference between the strike price and the market value.
 
-Strike price:
+Strike price: The price fixed in the contract at which the stock options can be exercised.
+
+Vesting period: The time that an employee must wait in order to be able to exercise the stock options.
 
