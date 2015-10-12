@@ -23,3 +23,7 @@ $(document).ready(function() {
     submitForm();
   });
 });
+
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+})
