@@ -13,7 +13,7 @@ post '/spread' do
     strike_price: (params['strikeprice']).to_f,
     grant_date: Date.parse(params['grantdate']),
     cliff_pct: params['cliff_pct'].to_f,
-    cliff_n_months: params['cliff_n_month'].to_f,
+    cliff_n_months: params['cliff_n_months'].to_f,
     vesting_period: params['vesting_period'].to_f
   )
 
