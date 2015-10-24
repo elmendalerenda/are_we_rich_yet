@@ -11,10 +11,14 @@ module AWRY
     end
 
     def spread
-      (@market_price - @options_agreement.strike_price) * @options_agreement.stock * vested_portion
+      (@market_price - @options_agreement.strike_price) * vested_stock
     end
 
     private
+
+    def vested_stock
+      (@options_agreement.stock * vested_portion).floor
+    end
 
     def vested_portion
       return 0.0 if cliff_in_progress?
