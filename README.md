@@ -12,3 +12,5 @@ Spread: The difference between the strike price and the market value.
 Strike price: The price fixed in the contract at which the stock options can be exercised.
 
 Vesting period: The time that an employee must wait in order to be able to exercise the stock options.
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
