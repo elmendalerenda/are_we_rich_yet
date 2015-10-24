@@ -17,13 +17,28 @@ function submitForm() {
   );
 }
 
-$(document).ready(function() {
+function enableSubmitButton(){
   $("#form").submit(function(e){
     e.preventDefault();
     submitForm();
   });
-});
+}
 
-$(function () {
-    $('[data-toggle="tooltip"]').tooltip()
+function enableTooltip() {
+  $('[data-toggle="tooltip"]').tooltip()
+}
+
+function feedAdvancedOptionsPanel(){
+  advanced_options = ['#cliff_pct', '#cliff_n_months', '#vesting_period'];
+
+  advanced_options.forEach(function(field){
+    form_box = $(field).parent().parent();
+    $('.panel-body .row').append(form_box);
+  })
+}
+
+$(document).ready(function() {
+  enableSubmitButton();
+  enableTooltip();
+  feedAdvancedOptionsPanel();
 })
