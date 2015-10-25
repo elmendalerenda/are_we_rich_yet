@@ -29,12 +29,16 @@ function enableTooltip() {
 }
 
 function feedAdvancedOptionsPanel(){
-  advanced_options = ['#cliff_pct', '#cliff_n_months', '#vesting_period'];
+  advanced_options = {
+    '#cliff_pct':  25.0,
+    '#cliff_n_months': 12,
+    '#vesting_period': 24 };
 
-  advanced_options.forEach(function(field){
+  for(field in advanced_options) {
     form_box = $(field).parent().parent();
     $('.panel-body .row').append(form_box);
-  })
+    $(field).val(advanced_options[field]);
+  }
 }
 
 $(document).ready(function() {
