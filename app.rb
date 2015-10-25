@@ -8,6 +8,7 @@ get '/' do
 end
 
 post '/spread' do
+  params = JSON.parse(request.body.read)
   agreement = AWRY::OptionsAgreement.new(
     stock: (params['stocks']).to_f,
     strike_price: (params['strikeprice']).to_f,
