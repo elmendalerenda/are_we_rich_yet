@@ -23,12 +23,13 @@ describe 'App' do
       and_return(7)
 
     post '/spread', params={'market_price' => 123.45,
+                            'agreements' => [
                             'stocks' => agreement.stock,
                             'strikeprice' => agreement.strike_price,
                             'grantdate' => '2014-12-12',
                             'cliff_pct' => agreement.cliff_pct,
                             'cliff_n_months' => agreement.cliff_n_months,
-                            'vesting_period' => agreement.vesting_period }.to_json
+                            'vesting_period' => agreement.vesting_period] }.to_json
 
     expect(last_response.ok?).to eql(true)
   end
