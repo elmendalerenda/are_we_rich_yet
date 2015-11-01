@@ -53,6 +53,11 @@ function enableDupAgreement() {
   $('#add-agreement').click(function(){
     new_agreement = $('.agreement').last().clone(false, false);
     new_agreement.insertAfter($('.agreement').last())
+    heading = UUID();
+    collapsing = UUID();
+    $('.panel-heading').last().attr('id', heading);
+    $('.panel-title a').last().attr('href', '#' + collapsing);
+    $('.panel-collapse').last().attr('id', collapsing);
   });
 };
 
