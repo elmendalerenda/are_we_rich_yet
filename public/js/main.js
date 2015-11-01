@@ -52,4 +52,9 @@ $(document).ready(function() {
   enableSubmitButton();
   enableTooltip();
   feedAdvancedOptionsPanel();
+
+  $('#add-agreement').click(function(){
+    new_agreement = $('.agreement').last().clone(false, false);
+    new_agreement.insertAfter($('.agreement').last())
+  });
 })
