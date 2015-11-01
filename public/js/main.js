@@ -48,13 +48,21 @@ function feedAdvancedOptionsPanel(){
   }
 }
 
-$(document).ready(function() {
-  enableSubmitButton();
-  enableTooltip();
-  feedAdvancedOptionsPanel();
-
+function enableDupAgreement() {
+  $('#add-agreement').removeClass('hidden');
   $('#add-agreement').click(function(){
     new_agreement = $('.agreement').last().clone(false, false);
     new_agreement.insertAfter($('.agreement').last())
   });
+};
+
+function UUID() {
+  return '_' + Math.random().toString(36).substr(2, 9);
+};
+
+$(document).ready(function() {
+  enableSubmitButton();
+  enableTooltip();
+  feedAdvancedOptionsPanel();
+  //enableDupAgreement();
 })
