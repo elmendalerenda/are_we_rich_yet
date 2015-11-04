@@ -8,8 +8,8 @@ get '/' do
 end
 
 post '/spread' do
-  agreement = build_agreement
-  spread = AWRY::ESOExerciseSimulator.spread(agreement, market_price, Date.today)
+  agreements = build_agreements
+  spread = AWRY::ESOExerciseSimulator.spread(agreements, market_price, Date.today)
 
   { spread: spread }.to_json
 end
@@ -28,14 +28,15 @@ def agreement_params
   form_params['agreements']
 end
 
-def build_agreement
-  params = agreement_params.first
-  AWRY::OptionsAgreement.new(
-    stock: (params['stocks']).to_f,
-    strike_price: (params['strikeprice']).to_f,
-    grant_date: Date.parse(params['grantdate']),
-    cliff_pct: params['cliff_pct'].to_f,
-    cliff_n_months: params['cliff_n_months'].to_f,
-    vesting_period: params['vesting_period'].to_f
-  )
+def build_agreements
+  agreement_params.map do |params|
+    AWRY::OptionsAgreement.new(
+      stock: (params['stocks']).to_f,
+      strike_price: (params['strikeprice']).to_f,
+      grant_date: Date.parse(params['grantdate']),
+      cliff_pct: params['cliff_pct'].to_f,
+      cliff_n_months: params['cliff_n_months'].to_f,
+      vesting_period: params['vesting_period'].to_f
+    )
+  end
 end

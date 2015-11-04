@@ -73,5 +73,5 @@ $(document).ready(function() {
   enableSubmitButton();
   enableTooltip();
   feedAdvancedOptionsPanel();
-  //enableDupAgreement();
+  enableDupAgreement();
 })

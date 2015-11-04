@@ -19,7 +19,7 @@ describe 'App' do
     )
 
     expect(AWRY::ESOExerciseSimulator).to receive(:spread).
-      with(agreement, 123.45, Date.today).
+      with([agreement], 123.45, Date.today).
       and_return(7)
 
     post '/spread', params={'market_price' => 123.45,
