@@ -14,12 +14,12 @@ function build_form_params(){
   return JSON.stringify({
     'market_price': $('#market_price').val(),
     'agreements': [{
-      'stocks': $('#stocks').val(),
-      'grantdate': $('#grantdate').val(),
-      'strikeprice': $('#strikeprice').val(),
-      'cliff_pct': $('#cliff_pct').val(),
-      'cliff_n_months': $('#cliff_n_months').val(),
-      'vesting_period': $('#vesting_period').val(),
+      'stocks': $("input[name='stocks']").val(),
+      'grantdate': $("input[name='grantdate']").val(),
+      'strikeprice': $("input[name='strikeprice']").val(),
+      'cliff_pct': $("input[name='cliff_pct']").val(),
+      'cliff_n_months': $("input[name='cliff_n_months']").val(),
+      'vesting_period': $("input[name='vesting_period']").val(),
     }]
   });
 }
@@ -37,12 +37,12 @@ function enableTooltip() {
 
 function feedAdvancedOptionsPanel(){
   advanced_options = {
-    '#cliff_pct':  25.0,
-    '#cliff_n_months': 12,
-    '#vesting_period': 24 };
+    'cliff_pct':  25.0,
+    'cliff_n_months': 12,
+    'vesting_period': 24 };
 
   for(field in advanced_options) {
-    form_box = $(field).parent().parent();
+    form_box = $("input[name='"+field+"']").parent().parent();
     $('.panel-body .row').append(form_box);
     $(field).val(advanced_options[field]);
   }
