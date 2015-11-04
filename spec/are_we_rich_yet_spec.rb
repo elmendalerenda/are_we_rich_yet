@@ -95,7 +95,7 @@ describe AWRY::ESOExerciseSimulator do
 
       spread = simulator.spread([agreement, agreement], market_price, date_fully_vested)
 
-      expect(spread).to eql(100_000.0)
+      expect(spread).to eql(200_000.0)
     end
   end
 end
