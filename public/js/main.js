@@ -11,16 +11,20 @@ function submitForm() {
 }
 
 function build_form_params(){
+  agreements = [];
+  $('.agreement').each(function(index, el){
+    agreements.push( {
+      'stocks': el.querySelector("input[name='stocks']").value,
+      'grantdate': el.querySelector("input[name='grantdate']").value,
+      'strikeprice':el.querySelector("input[name='strikeprice']").value,
+      'cliff_pct':el.querySelector("input[name='cliff_pct']").value,
+      'cliff_n_months':el.querySelector("input[name='cliff_n_months']").value,
+      'vesting_period':el.querySelector("input[name='vesting_period']").value
+    })
+  });
   return JSON.stringify({
     'market_price': $('#market_price').val(),
-    'agreements': [{
-      'stocks': $("input[name='stocks']").val(),
-      'grantdate': $("input[name='grantdate']").val(),
-      'strikeprice': $("input[name='strikeprice']").val(),
-      'cliff_pct': $("input[name='cliff_pct']").val(),
-      'cliff_n_months': $("input[name='cliff_n_months']").val(),
-      'vesting_period': $("input[name='vesting_period']").val(),
-    }]
+    'agreements': agreements
   });
 }
 
