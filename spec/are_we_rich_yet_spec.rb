@@ -23,7 +23,7 @@ describe AWRY::ESOExerciseSimulator do
           cliff_n_months: 12)
       )
 
-      spread = simulator.spread(agreement, market_price, date_before_cliff_ends)
+      spread = simulator.spread([agreement], market_price, date_before_cliff_ends)
 
       expect(spread).to eql(0.0)
     end
@@ -41,7 +41,7 @@ describe AWRY::ESOExerciseSimulator do
       )
       date_after_cliff = Date.new(2013, 2, 21)
 
-      spread = simulator.spread(agreement, market_price, date_after_cliff)
+      spread = simulator.spread([agreement], market_price, date_after_cliff)
 
       expect(spread).to eql(100_000.0)
     end
@@ -57,7 +57,7 @@ describe AWRY::ESOExerciseSimulator do
       )
       date_2_months_after_cliff_ends = Date.new(2014, 3, 21)
 
-      spread = simulator.spread(agreement, market_price, date_2_months_after_cliff_ends)
+      spread = simulator.spread([agreement], market_price, date_2_months_after_cliff_ends)
 
       expect(spread).to eql(35820.0)
     end
@@ -75,7 +75,25 @@ describe AWRY::ESOExerciseSimulator do
       )
       date_fully_vested = Date.new(2013, 5, 21)
 
-      spread = simulator.spread(agreement, market_price, date_fully_vested)
+      spread = simulator.spread([agreement], market_price, date_fully_vested)
+
+      expect(spread).to eql(100_000.0)
+    end
+  end
+
+  context 'more than one agreement' do
+    it 'calculates the spread of all the agreements' do
+      agreement = AWRY::OptionsAgreement.new(
+        stock: 5_000.0,
+        strike_price: 10.0,
+        grant_date: Date.new(2013, 1, 21),
+        cliff_pct: 50.0,
+        cliff_n_months: 1,
+        vesting_period: 3
+      )
+      date_fully_vested = Date.new(2013, 5, 21)
+
+      spread = simulator.spread([agreement, agreement], market_price, date_fully_vested)
 
       expect(spread).to eql(100_000.0)
     end

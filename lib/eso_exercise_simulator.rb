@@ -1,37 +1,39 @@
 module AWRY
   class ESOExerciseSimulator
-    def self.spread(options_agreement, market_price, exercise_date=Date.today)
-      new(options_agreement, market_price, exercise_date).spread
+    def self.spread(options_agreements, market_price, exercise_date=Date.today)
+      new(options_agreements, market_price, exercise_date).spread
     end
 
-    def initialize(options_agreement, market_price, exercise_date)
-      @options_agreement = options_agreement
+    def initialize(options_agreements, market_price, exercise_date)
+      @options_agreements = options_agreements
       @market_price = market_price
       @exercise_date = exercise_date
     end
 
     def spread
-      (@market_price - @options_agreement.strike_price) * vested_stock
+      @options_agreements.reduce(0) do |acc, agreement|
+        (@market_price - agreement.strike_price) * vested_stock(agreement)
+      end
     end
 
     private
 
-    def vested_stock
-      (@options_agreement.stock * vested_portion).floor
+    def vested_stock(agreement)
+      (agreement.stock * vested_portion(agreement)).floor
     end
 
-    def vested_portion
-      return 0.0 if cliff_in_progress?
+    def vested_portion(agreement)
+      return 0.0 if cliff_in_progress?(agreement)
 
-      @options_agreement.cliff_release_portion + (vested_months * @options_agreement.vested_monthly)
+      agreement.cliff_release_portion + (vested_months(agreement) * agreement.vested_monthly)
     end
 
-    def cliff_in_progress?
-      @exercise_date < @options_agreement.cliff_ends_at
+    def cliff_in_progress?(agreement)
+      @exercise_date < agreement.cliff_ends_at
     end
 
-    def vested_months
-      @exercise_date.month - @options_agreement.cliff_ends_at.month + 12 * (@exercise_date.year - @options_agreement.cliff_ends_at.year)
+    def vested_months(agreement)
+      @exercise_date.month - agreement.cliff_ends_at.month + 12 * (@exercise_date.year - agreement.cliff_ends_at.year)
     end
   end
 end
