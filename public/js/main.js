@@ -56,7 +56,9 @@ function enableDupAgreement() {
   $('#add-agreement').removeClass('hidden');
   $('#add-agreement').click(function(){
     new_agreement = $('.agreement').last().clone(false, false);
-    new_agreement.insertAfter($('.agreement').last())
+    separator = $('<hr>')
+    separator.insertAfter($('.agreement').last());
+    new_agreement.insertAfter(separator);
     heading = UUID();
     collapsing = UUID();
     $('.panel-heading').last().attr('id', heading);
