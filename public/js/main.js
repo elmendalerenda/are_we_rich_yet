@@ -48,17 +48,16 @@ function feedAdvancedOptionsPanel(){
   for(field in advanced_options) {
     form_box = $("input[name='"+field+"']").parent().parent();
     $('.panel-body .row').append(form_box);
-    $(field).val(advanced_options[field]);
+    $("input[name='"+field+"']").val(advanced_options[field]);
   }
 }
 
 function enableDupAgreement() {
   $('#add-agreement').removeClass('hidden');
   $('#add-agreement').click(function(){
-    new_agreement = $('.agreement').last().clone(false, false);
-    separator = $('<hr>')
-    separator.insertAfter($('.agreement').last());
-    new_agreement.insertAfter(separator);
+    new_agreement = $('.agreement').last().clone(true, true);
+    new_agreement.insertAfter($('.agreement').last());
+    new_agreement.find("div[name='remove']").show();
     heading = UUID();
     collapsing = UUID();
     $('.panel-heading').last().attr('id', heading);
@@ -66,6 +65,12 @@ function enableDupAgreement() {
     $('.panel-collapse').last().attr('id', collapsing);
   });
 };
+
+function enableRemove() {
+  $('div[name="remove"]').click(function(ev){
+    $(ev.currentTarget).parent().parent().remove();
+  });
+}
 
 function UUID() {
   return '_' + Math.random().toString(36).substr(2, 9);
@@ -76,4 +81,5 @@ $(document).ready(function() {
   enableTooltip();
   feedAdvancedOptionsPanel();
   enableDupAgreement();
+  enableRemove();
 })
