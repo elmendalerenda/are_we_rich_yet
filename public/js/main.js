@@ -55,9 +55,10 @@ function feedAdvancedOptionsPanel(){
 function enableDupAgreement() {
   $('#add-agreement').removeClass('hidden');
   $('#add-agreement').click(function(){
-    new_agreement = $('.agreement').last().clone(true, true);
+    new_agreement = $('.agreement').last().clone(false, false);
     new_agreement.insertAfter($('.agreement').last());
     new_agreement.find("div[name='remove']").show();
+    enableRemove();
     heading = UUID();
     collapsing = UUID();
     $('.panel-heading').last().attr('id', heading);
@@ -81,5 +82,4 @@ $(document).ready(function() {
   enableTooltip();
   feedAdvancedOptionsPanel();
   enableDupAgreement();
-  enableRemove();
 })

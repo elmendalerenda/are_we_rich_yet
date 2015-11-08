@@ -35,17 +35,36 @@
       </div>
     </nav>
 
+    <form id="form">
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
       <div class="container">
-        <h1>Are We Rich Yet?</h1>
-        <p>Simulate the value of your stock options if you exercise them today</p>
-
-     </div>
+        <div class="row">
+          <div class="col-md-6">
+            <h1>Are We Rich Yet?</h1>
+            <p>Simulate the value of your stock options if you exercise them today</p>
+          </div>
+          <div class="col-md-6 text-right">
+            <p class="text-right">
+              <button type="submit" id="get-spread" class="btn btn-primary btn-lg">Get the value of your shares</button>
+            </p>
+            <p class="bg-money text-center">
+              <label id="spread" class="h1" style="display:none"></label>
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="container">
-      <form id="form">
+        <div class="row">
+          <div class="col-md-2">
+            <div class="form-group">
+              <label>Market Price of a Share</label>
+              <input type="number" step="0.01" name="market_price" id="market_price" class="form-control" placeholder="8.5" required>
+            </div>
+          </div>
+        </div>
         <div class="agreement">
           <div class="text-right">
             <div name="remove" class="btn-primary btn btn-xs" style="display:none"> Remove Agreement</div>
@@ -110,32 +129,13 @@
         <p class="text-right">
           <button type="button" id="add-agreement" class="hidden btn btn-primary btn-sm">Add Agreement</button>
         </p>
-        <div class="row">
-          <div class="col-md-offset-4 col-md-4">
-            <div class="form-group">
-              <label>Market Price of a Share</label>
-              <input type="number" step="0.01" name="market_price" id="market_price" class="form-control" placeholder="8.5" required>
-            </div>
-          </div>
-        </div>
-         <p class="text-center">
-          <button type="submit" id="get-spread" class="btn btn-primary btn-lg">Get the value of your shares</button>
-        </p>
-      </form>
 
       <br/>
       <br/>
 
-      <div class="row">
-        <div class="col-md-offset-4 col-md-4">
-          <p class="bg-primary text-center">
-          <label id="spread" class="h1" style="display:none"></label>
-          </p>
-        </div>
-      </div>
-
-      <hr>
+          <hr>
     </div> <!-- /container -->
+    </form>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
     <script src="js/vendor/bootstrap.min.js"></script>
