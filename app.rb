@@ -9,7 +9,7 @@ end
 
 post '/spread' do
   agreements = build_agreements
-  spread = AWRY::ESOExerciseSimulator.spread(agreements, market_price, Date.today)
+  spread = AWRY::ESOExerciseSimulator.spread(agreements, market_price, exercise_date)
 
   { spread: spread }.to_json
 end
@@ -22,6 +22,10 @@ end
 
 def market_price
   form_params['market_price'].to_f
+end
+
+def exercise_date
+  Date.parse(form_params['exercise_date'])
 end
 
 def agreement_params

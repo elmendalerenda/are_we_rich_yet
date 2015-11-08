@@ -24,6 +24,7 @@ function build_form_params(){
   });
   return JSON.stringify({
     'market_price': $('#market_price').val(),
+    'exercise_date': $('#exercisedate').val(),
     'agreements': agreements
   });
 }
@@ -73,6 +74,10 @@ function enableRemove() {
   });
 }
 
+function setExerciseDate() {
+  $('#exercisedate').val(new Date().toLocaleFormat('%Y-%m-%d'));
+}
+
 function UUID() {
   return '_' + Math.random().toString(36).substr(2, 9);
 };
@@ -82,4 +87,5 @@ $(document).ready(function() {
   enableTooltip();
   feedAdvancedOptionsPanel();
   enableDupAgreement();
+  setExerciseDate();
 })
