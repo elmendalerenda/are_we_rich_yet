@@ -44,7 +44,7 @@ function feedAdvancedOptionsPanel(){
   advanced_options = {
     'cliff_pct':  25.0,
     'cliff_n_months': 12,
-    'vesting_period': 24 };
+    'vesting_period': 36 };
 
   for(field in advanced_options) {
     form_box = $("input[name='"+field+"']").parent().parent();
