@@ -75,7 +75,7 @@ function enableRemove() {
 }
 
 function setExerciseDate() {
-  $('#exercisedate').val(new Date().toLocaleFormat('%Y-%m-%d'));
+  $('#exercisedate').val($.format.date(new Date(), "yyyy-MM-dd"))
 }
 
 function UUID() {
